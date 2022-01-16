@@ -1,0 +1,36 @@
+//
+//  OnboardingView.swift
+//  Restart
+//
+//  Created by Eric Scagnelli on 1/9/22.
+//
+
+import SwiftUI
+
+struct OnboardingView: View {
+    // MARK: Retrieve App Storage property
+    //Value is NOT set here
+    //this initializer is just a failsafe incase the value is not found in storage due to error
+    @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
+    
+    // MARK: Body
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("Onboarding")
+                .font(.largeTitle)
+            Button(action: {
+                //setting this to false calls the app storage setter
+                //value is persisted in App Storage
+                isOnboardingViewActive = false;
+            }){
+                Text("Start")
+            }
+        }
+    }
+}
+
+struct OnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingView()
+    }
+}
